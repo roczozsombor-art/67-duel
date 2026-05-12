@@ -10,7 +10,8 @@
       "Bash(timeout 5 node server/index.js)",
       "Bash(node_modules/.bin/vite build *)",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git rm *)"
     ],
     "additionalDirectories": [
       "/Users/roczozsombor/Projects/67"
