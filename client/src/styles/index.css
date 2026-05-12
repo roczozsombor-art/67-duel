@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #0a0a0f;
+    color: #e0e0ff;
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track { background: #0a0a0f; }
+  ::-webkit-scrollbar-thumb { background: #00ff8844; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #00ff88; }
+}
+
+@layer components {
+  .neon-text-green {
+    text-shadow: 0 0 5px #00ff88, 0 0 20px #00ff88, 0 0 40px #00ff88;
+    color: #00ff88;
+  }
+  .neon-text-cyan {
+    text-shadow: 0 0 5px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff;
+    color: #00d4ff;
+  }
+  .neon-text-pink {
+    text-shadow: 0 0 5px #ff0080, 0 0 20px #ff0080, 0 0 40px #ff0080;
+    color: #ff0080;
+  }
+  .neon-border-green {
+    border: 1px solid #00ff88;
+    box-shadow: 0 0 8px #00ff8866, inset 0 0 8px #00ff8811;
+  }
+  .neon-border-cyan {
+    border: 1px solid #00d4ff;
+    box-shadow: 0 0 8px #00d4ff66, inset 0 0 8px #00d4ff11;
+  }
+  .neon-border-pink {
+    border: 1px solid #ff0080;
+    box-shadow: 0 0 8px #ff008066, inset 0 0 8px #ff008011;
+  }
+  .glass {
+    background: rgba(15, 15, 26, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .counter-glow {
+    animation: counterGlow 1s ease-in-out infinite alternate;
+  }
+  .btn-neon {
+    @apply font-display font-bold tracking-widest uppercase px-6 py-3 rounded-lg transition-all duration-200 cursor-pointer;
+    background: transparent;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    box-shadow: 0 0 10px #00ff8844;
+    letter-spacing: 0.15em;
+  }
+  .btn-neon:hover {
+    background: #00ff8822;
+    box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff8866;
+    transform: scale(1.03);
+  }
+  .btn-neon:active {
+    transform: scale(0.97);
+  }
+  .btn-neon-cyan {
+    @apply btn-neon;
+    border-color: #00d4ff;
+    color: #00d4ff;
+    box-shadow: 0 0 10px #00d4ff44;
+  }
+  .btn-neon-cyan:hover {
+    background: #00d4ff22;
+    box-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff66;
+  }
+  .btn-neon-pink {
+    @apply btn-neon;
+    border-color: #ff0080;
+    color: #ff0080;
+    box-shadow: 0 0 10px #ff008044;
+  }
+  .btn-neon-pink:hover {
+    background: #ff008022;
+    box-shadow: 0 0 20px #ff0080, 0 0 40px #ff008066;
+  }
+}
+
+@keyframes counterGlow {
+  from { text-shadow: 0 0 10px #00ff88, 0 0 30px #00ff88; }
+  to   { text-shadow: 0 0 20px #00ff88, 0 0 60px #00ff88, 0 0 100px #00ff8888; }
+}
+
+@keyframes scanline {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(100vh); }
+}
+
+.bg-scanline::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(transparent, #00ff8811, transparent);
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
