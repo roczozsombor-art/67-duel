@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
+import { SERVER_URL } from '../config';
 
 let globalSocket = null;
 
 export function getSocket() {
   if (!globalSocket) {
-    const url = import.meta.env.VITE_SERVER_URL || '/';
-    globalSocket = io(url, { transports: ['websocket', 'polling'] });
+    globalSocket = io(SERVER_URL, { transports: ['websocket', 'polling'] });
   }
   return globalSocket;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Home from './pages/Home';
+import { API_BASE } from './config';
 import Lobby from './pages/Lobby';
 import Match from './pages/Match';
 import Results from './pages/Results';
@@ -29,7 +30,7 @@ export default function App() {
     if (saved) {
       try {
         const u = JSON.parse(saved);
-        fetch(`/api/user/${u.id}`)
+        fetch(`${API_BASE}/user/${u.id}`)
           .then(r => r.json())
           .then(d => {
             if (d.user) {

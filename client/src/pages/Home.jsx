@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RankBadge from '../components/RankBadge';
+import { API_BASE } from '../config';
 
 export default function Home({ onEnterLobby }) {
   const [username, setUsername] = useState('');
@@ -21,7 +22,7 @@ export default function Home({ onEnterLobby }) {
 
   async function fetchLeaderboard() {
     try {
-      const res = await fetch('/api/leaderboard');
+      const res = await fetch(`${API_BASE}/leaderboard`);
       const data = await res.json();
       setLeaderboard(data.slice(0, 10));
     } catch {}
@@ -32,7 +33,7 @@ export default function Home({ onEnterLobby }) {
     setError('');
     setLoading(true);
     try {
-      const res = await fetch('/api/user/register', {
+      const res = await fetch(`${API_BASE}/user/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: username.trim() }),
